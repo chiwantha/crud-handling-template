@@ -1,11 +1,15 @@
 "use client";
 
-import { Children, cloneElement, isValidElement } from "react";
-import { toast } from "react-toastify";
+import { Children, cloneElement, isValidElement, useState } from "react";
+import ActionTray from "../layout/actionTray/ActionTray";
 
 const DataGridCrud = ({ children }) => {
+  const [trayOpen, setTrayOpen] = useState(false);
+  const [trayProps, setTrayProps] = useState(null);
+
   const onEdit = (user) => {
-    toast.info(`Edit Clicked: ${user.name}`);
+    setTrayOpen(true);
+    setTrayProps(user);
   };
 
   const enhancedChildren = Children.map(children, (child) => {
@@ -18,8 +22,11 @@ const DataGridCrud = ({ children }) => {
   });
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
-      {enhancedChildren}
+    <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {enhancedChildren}
+      </div>
+      <ActionTray state={trayOpen} close={setTrayOpen} data={trayProps} />
     </div>
   );
 };

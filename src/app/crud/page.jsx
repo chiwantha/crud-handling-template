@@ -1,5 +1,5 @@
 import UserCard from "@/components/card/UserCard";
-import DataGridCrud from "@/components/Grid/DataGridCrud";
+import DataGridCrud from "@/components/grid/DataGridCrud";
 import React, { use } from "react";
 import { toast } from "react-toastify";
 
