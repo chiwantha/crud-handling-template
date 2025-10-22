@@ -1,11 +1,15 @@
 import ActionBtn from "@/components/btn/ActionBtn";
+import { cloneElement, isValidElement } from "react";
 
-const ActionTray = ({ state, component, data, close }) => {
+const ActionTray = ({ state, form, data, close }) => {
   const { name } = data || {};
-  console.log(data);
+
+  const injectedForm = isValidElement(form)
+    ? cloneElement(form, { data: data })
+    : form;
   return (
     <div
-      className={`fixed top-0 right-0 h-screen w-[50%] p-4
+      className={`fixed top-0 right-0 h-screen w-[50%] p-4 gap-4
          bg-gray-200 flex flex-col transition-all duration-300
          ${
            state
@@ -24,6 +28,9 @@ const ActionTray = ({ state, component, data, close }) => {
         />
       </div>
       <div className="">{JSON.stringify(data)}</div>
+      <div className="">
+        {form ? injectedForm : <span>No Form Added !</span>}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import UserCard from "@/components/card/UserCard";
 import DataGridCrud from "@/components/grid/DataGridCrud";
-import React, { use } from "react";
 import { toast } from "react-toastify";
 
 async function getUsersList() {
@@ -25,7 +24,7 @@ const CrudPage = async () => {
   return (
     <div className="flex flex-col gap-4">
       <span>Crud Page</span>
-      <DataGridCrud>
+      <DataGridCrud formName={`user`}>
         {users.data.map((user, index) => (
           <UserCard data={user} key={index} />
         ))}
