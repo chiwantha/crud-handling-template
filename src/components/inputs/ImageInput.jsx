@@ -2,8 +2,9 @@
 
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import Webcam from "react-webcam";
-import Button from "@/components/buttons/button/Button";
+
 import Image from "next/image";
+import ActionBtn from "../btn/ActionBtn";
 
 const videoConstraints = {
   width: 720,
@@ -100,7 +101,7 @@ const ImageInput = ({ value = "", onChange }) => {
       <div className="flex flex-col justify-center gap-2">
         <div className="w-fit flex flex-col gap-2">
           <div className="flex gap-2">
-            <Button
+            <ActionBtn
               title={isCam ? "Close Camera" : "Use Camera"}
               pd="px-4 py-2"
               bg={
@@ -110,7 +111,7 @@ const ImageInput = ({ value = "", onChange }) => {
               }
               click={() => setIsCam((p) => !p)}
             />
-            <Button
+            <ActionBtn
               title="Capture"
               pd="px-4 py-2"
               click={capture}
@@ -118,7 +119,7 @@ const ImageInput = ({ value = "", onChange }) => {
             />
           </div>
 
-          <Button
+          <ActionBtn
             title="Upload Image"
             pd="px-4 py-2"
             click={() => fileInputRef.current?.click()}
@@ -132,7 +133,7 @@ const ImageInput = ({ value = "", onChange }) => {
           />
 
           {preview && (
-            <Button
+            <ActionBtn
               title="Clear"
               pd="px-4 py-2"
               click={clearImage}

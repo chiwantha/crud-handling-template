@@ -10,7 +10,7 @@ const ActionTray = ({ state, form, data, close }) => {
   return (
     <div
       className={`fixed top-0 right-0 h-screen w-[50%] p-4 gap-4
-         bg-gray-200 flex flex-col transition-all duration-300
+         bg-gray-50 flex flex-col transition-all duration-300
          ${
            state
              ? `-translate-x-0 shadow-md border-l-2 border-blue-500
@@ -27,9 +27,9 @@ const ActionTray = ({ state, form, data, close }) => {
           title={`X`}
         />
       </div>
-      <div className="">{JSON.stringify(data)}</div>
+      {/* <div className="">{JSON.stringify(data)}</div> */}
       <div className="">
-        {form ? injectedForm : <span>No Form Added !</span>}
+        {injectedForm ? injectedForm : <span>No Form Added !</span>}
       </div>
     </div>
   );
